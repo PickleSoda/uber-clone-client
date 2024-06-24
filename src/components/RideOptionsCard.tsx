@@ -22,12 +22,14 @@ type NavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<StackParamList, 'RideOptionsCard'>,
   NativeStackNavigationProp<RootStackParamList>
 >;
+
 type Item = {
   id: string;
   title: string;
   multiplier: number;
   image: ImageSourcePropType;
 };
+
 const data: Item[] = [
   {
     id: 'Uber-X',
@@ -48,12 +50,14 @@ const data: Item[] = [
     image: require('../../assets/images/Lux.webp'),
   },
 ];
+
 const SURGE_CHARGE_RATE = 1.5;
 
 const RideOptionsCard = () => {
   const navigation = useNavigation<NavigationProp>();
   const [selected, setSelected] = useState<Item | null>(null);
   const travelTimeInformation = useAppSelector(selectTravelTimeInformation);
+
   return (
     <SafeAreaView className="bg-white flex-grow">
       <View>
@@ -70,6 +74,8 @@ const RideOptionsCard = () => {
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
+        scrollEnabled={true}
+        contentContainerStyle={{ paddingBottom: 150 }} // Adds padding at the bottom
         renderItem={({ item: { id, image, multiplier, title }, item }) => (
           <TouchableOpacity
             onPress={() => setSelected(item)}
@@ -95,11 +101,11 @@ const RideOptionsCard = () => {
           </TouchableOpacity>
         )}
       />
-      <View>
+      <View className="absolute bottom-16 left-0 right-0 bg-white p-2">
         <TouchableOpacity
           disabled={!selected}
-          className={` bg-black py-3 m-3 rounded-lg ${!selected && 'bg-gray-400'}`}
-          onPress={() => navigation.navigate('Home')}
+          className={`bg-black py-3 rounded-lg ${!selected && 'bg-gray-400'}`}
+          onPress={() => navigation.navigate('FindARideCard')}
         >
           <Text className="text-center text-white text-xl">Choose {selected?.title}</Text>
         </TouchableOpacity>

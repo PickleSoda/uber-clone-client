@@ -21,7 +21,7 @@ const NavigateCard = () => {
   const navigation = useNavigation<NavigationProp>();
   return (
     <SafeAreaView className="bg-white flex-1 ">
-      <Text className="text-center py-5 text-xl">Good Morning, Nguyen Ha</Text>
+      <Text className="text-center py-5 text-xl">Good Morning!</Text>
       <View className="flex-shrink">
         <View>
           <GooglePlacesAutocomplete

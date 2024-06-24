@@ -11,10 +11,12 @@ import Map from '../components/Map';
 import NavigateCard from '../components/NavigateCard';
 import RideOptionsCard from '../components/RideOptionsCard';
 import { RootStackParamList } from '../navigators/RootNavigator';
+import FindARideCard from '../components/FindARideCard';
 
 export type StackParamList = {
   NavigateCard: undefined;
   RideOptionsCard: undefined;
+  FindARideCard: undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -46,6 +48,11 @@ const MapScreen = () => {
           <Stack.Screen
             name="RideOptionsCard"
             component={RideOptionsCard}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="FindARideCard"
+            component={FindARideCard}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
